@@ -13,7 +13,7 @@ def trans_bool_(x):
 def dataProcess(name):
     s         = pd.read_csv(name)
     s['scan'] = map(lambda x:trans_bool_(x), s['is_scan'])
-    s['secu']  = map(lambda x:trans_bool_(x), s['is_sec'])
+    s['secu'] = map(lambda x:trans_bool_(x), s['is_sec'])
     s = s.loc[s['timelong']>0].copy()
     s = s.loc[s['timelong']<300000].copy()
     return s.drop(['is_scan', 'is_sec'], axis=1)
